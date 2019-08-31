@@ -28,12 +28,12 @@ let dette = {
     show: ()=>{
         let res = "";
         let sum = 0;
-        let current = dette.list.filter(n => n.creditor == creditor.current);
+        let current = dette.list.filter(n => n.creditor === creditor.current);
         current = dette.reduce(current);
         current.forEach((elmt)=>{
             res += "<li>"
             + elmt.val + " : " + elmt.com + " : " + elmt.dat
-            +"<li>";
+            +"</li>";
             sum += parseFloat(elmt.val);
         });
         document.getElementById("list").innerHTML = res;
@@ -165,7 +165,7 @@ document.getElementById("selectCreditor").onchange = () => {
 }
 
 
-if ('serviceWorker' in navigator) {
+/* if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js').then(function(registration) {
         // Registration was successful
@@ -175,7 +175,7 @@ if ('serviceWorker' in navigator) {
         console.log('ServiceWorker registration failed: ', err);
       });
     });
-}
+} */
 
 creditor.list = cach.retriev(creditor.label);
 creditor.display();
